@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
 class DioSettings {
-  static final mainServer =
-      "http://api.openweathermap.org/data/2.5/weather?q=Bishkek&appid=5452d8bda19e96bbe4ab066cddd371f8&units=metric";
-
+  static final mainServer = "http://api.openweathermap.org/data/2.5/weather?";
+  static final appid = "5452d8bda19e96bbe4ab066cddd371f8";
+  static final units = "metric";
   Dio dio = Dio(BaseOptions(
     baseUrl: mainServer,
     connectTimeout: 10000,

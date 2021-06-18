@@ -22,7 +22,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   Stream<WeatherState> _mapInitialWeatherEvent(
       _InitialWeatherEvent event) async* {
     yield WeatherState.loadInProgress();
-    WeatherModel data = await repository.getWeather();
+    WeatherModel data = await repository.getWeather("Bishkek");
     yield WeatherState.data(data);
   }
 }

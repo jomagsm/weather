@@ -14,12 +14,14 @@ class ServiceApi {
     _dioSettings = DioSettings();
     _dio = _dioSettings.dio;
   }
-  Future<WeatherModel> getWeather() async {
-    final response = await _dio.get(
-      "",
-    );
+  Future<WeatherModel> getWeather(city) async {
+    final response = await _dio.get("", queryParameters: {
+      "q": city,
+      "appid": DioSettings.appid,
+      "units": DioSettings.units,
+    });
     WeatherModel weather = WeatherModel.fromJson(response.data);
-    // print(weather.weather.isEmpty);
     return weather;
   }
 }
+// ?q=Bishkek&appid=5452d8bda19e96bbe4ab066cddd371f8&units=metric

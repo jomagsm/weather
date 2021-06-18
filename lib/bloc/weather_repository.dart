@@ -3,5 +3,6 @@ import 'package:weatther2/data/network/service_api.dart';
 
 class WeatherRepository {
   ServiceApi _weatherProvider = ServiceApi();
-  Future<WeatherModel> getWeather() => _weatherProvider.getWeather();
+  Future<WeatherModel> getWeather(String city) =>
+      _weatherProvider.getWeather(city);
 }
