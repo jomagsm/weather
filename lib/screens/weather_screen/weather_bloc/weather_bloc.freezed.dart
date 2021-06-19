@@ -24,7 +24,7 @@ class _$WeatherStateTearOff {
   }
 
 // ignore: unused_element
-  _DataWeatherState data(WeatherModel weather) {
+  _DataWeatherState data(Weather weather) {
     return _DataWeatherState(
       weather,
     );
@@ -46,14 +46,14 @@ mixin _$WeatherState {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required TResult data(WeatherModel weather),
+    @required TResult data(Weather weather),
     @required TResult loadFailure(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult data(WeatherModel weather),
+    TResult data(Weather weather),
     TResult loadFailure(),
     @required TResult orElse(),
   });
@@ -131,7 +131,7 @@ class _$_WeatherStateInitial implements _WeatherStateInitial {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required TResult data(WeatherModel weather),
+    @required TResult data(Weather weather),
     @required TResult loadFailure(),
   }) {
     assert(initial != null);
@@ -146,7 +146,7 @@ class _$_WeatherStateInitial implements _WeatherStateInitial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult data(WeatherModel weather),
+    TResult data(Weather weather),
     TResult loadFailure(),
     @required TResult orElse(),
   }) {
@@ -236,7 +236,7 @@ class _$_WeatherStateLoadInProgress implements _WeatherStateLoadInProgress {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required TResult data(WeatherModel weather),
+    @required TResult data(Weather weather),
     @required TResult loadFailure(),
   }) {
     assert(initial != null);
@@ -251,7 +251,7 @@ class _$_WeatherStateLoadInProgress implements _WeatherStateLoadInProgress {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult data(WeatherModel weather),
+    TResult data(Weather weather),
     TResult loadFailure(),
     @required TResult orElse(),
   }) {
@@ -303,7 +303,7 @@ abstract class _$DataWeatherStateCopyWith<$Res> {
   factory _$DataWeatherStateCopyWith(
           _DataWeatherState value, $Res Function(_DataWeatherState) then) =
       __$DataWeatherStateCopyWithImpl<$Res>;
-  $Res call({WeatherModel weather});
+  $Res call({Weather weather});
 }
 
 /// @nodoc
@@ -322,7 +322,7 @@ class __$DataWeatherStateCopyWithImpl<$Res>
     Object weather = freezed,
   }) {
     return _then(_DataWeatherState(
-      weather == freezed ? _value.weather : weather as WeatherModel,
+      weather == freezed ? _value.weather : weather as Weather,
     ));
   }
 }
@@ -332,7 +332,7 @@ class _$_DataWeatherState implements _DataWeatherState {
   const _$_DataWeatherState(this.weather) : assert(weather != null);
 
   @override
-  final WeatherModel weather;
+  final Weather weather;
 
   @override
   String toString() {
@@ -361,7 +361,7 @@ class _$_DataWeatherState implements _DataWeatherState {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required TResult data(WeatherModel weather),
+    @required TResult data(Weather weather),
     @required TResult loadFailure(),
   }) {
     assert(initial != null);
@@ -376,7 +376,7 @@ class _$_DataWeatherState implements _DataWeatherState {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult data(WeatherModel weather),
+    TResult data(Weather weather),
     TResult loadFailure(),
     @required TResult orElse(),
   }) {
@@ -420,9 +420,9 @@ class _$_DataWeatherState implements _DataWeatherState {
 }
 
 abstract class _DataWeatherState implements WeatherState {
-  const factory _DataWeatherState(WeatherModel weather) = _$_DataWeatherState;
+  const factory _DataWeatherState(Weather weather) = _$_DataWeatherState;
 
-  WeatherModel get weather;
+  Weather get weather;
   @JsonKey(ignore: true)
   _$DataWeatherStateCopyWith<_DataWeatherState> get copyWith;
 }
@@ -469,7 +469,7 @@ class _$_WeatherStateLoadFailure implements _WeatherStateLoadFailure {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadInProgress(),
-    @required TResult data(WeatherModel weather),
+    @required TResult data(Weather weather),
     @required TResult loadFailure(),
   }) {
     assert(initial != null);
@@ -484,7 +484,7 @@ class _$_WeatherStateLoadFailure implements _WeatherStateLoadFailure {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadInProgress(),
-    TResult data(WeatherModel weather),
+    TResult data(Weather weather),
     TResult loadFailure(),
     @required TResult orElse(),
   }) {

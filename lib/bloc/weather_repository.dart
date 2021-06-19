@@ -1,8 +1,11 @@
-import 'package:weatther2/data/network/models.dart';
+import 'package:weatther2/data/network/cordinates_model.dart';
 import 'package:weatther2/data/network/service_api.dart';
+import 'package:weatther2/data/network/weather_model.dart';
 
 class WeatherRepository {
   ServiceApi _weatherProvider = ServiceApi();
-  Future<WeatherModel> getWeather(String city) =>
-      _weatherProvider.getWeather(city);
+  Future<Coordinates> getCoordinates(String city) =>
+      _weatherProvider.getCoordinates(city);
+
+  Future<Weather> getWeather() => _weatherProvider.getWeather();
 }

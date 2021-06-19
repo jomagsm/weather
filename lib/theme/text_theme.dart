@@ -21,6 +21,12 @@ class TextThemes {
     color: ColorPalette.white,
     shadows: shadow,
   );
+  static var h3 = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.normal,
+    color: ColorPalette.white,
+    shadows: shadow,
+  );
   static var time = TextStyle(
     fontSize: 40,
     fontWeight: FontWeight.normal,

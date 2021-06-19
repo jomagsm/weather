@@ -2,7 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weatther2/bloc/weather_repository.dart';
-import 'package:weatther2/data/network/models.dart';
+import 'package:weatther2/data/network/cordinates_model.dart';
+import 'package:weatther2/data/network/weather_model.dart';
 
 part 'weather_state.dart';
 part 'weather_event.dart';
@@ -22,7 +23,8 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   Stream<WeatherState> _mapInitialWeatherEvent(
       _InitialWeatherEvent event) async* {
     yield WeatherState.loadInProgress();
-    WeatherModel data = await repository.getWeather("Bishkek");
+    Coordinates coordinates = await repository.getCoordinates('Bishkek');
+    Weather data = await repository.getWeather();
     yield WeatherState.data(data);
   }
 }
