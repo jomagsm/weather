@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weatther2/bloc/weather_repository.dart';
-import 'package:weatther2/data/network/cordinates_model.dart';
+import 'package:weatther2/data/network/coordinates_model.dart';
 import 'package:weatther2/data/network/weather_model.dart';
 
 part 'weather_state.dart';

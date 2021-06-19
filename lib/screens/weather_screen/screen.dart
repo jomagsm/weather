@@ -6,6 +6,8 @@ import 'package:weatther2/screens/weather_screen/weather_bloc/weather_bloc.dart'
 import 'package:weatther2/theme/color_theme.dart';
 import 'package:weatther2/theme/text_theme.dart';
 
+import 'widgets/hourly_list.dart';
+
 class HomePage extends StatelessWidget {
   HomePage({Key key}) : super(key: key);
   final List hourlyIndex = [3, 6, 9, 12];
@@ -86,42 +88,9 @@ class HomePage extends StatelessWidget {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                Container(
-                                  height: 100,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    shrinkWrap: true,
-                                    itemCount: hourlyIndex.length,
-                                    itemBuilder: (_, index) {
-                                      return Container(
-                                        margin: EdgeInsets.only(left: 20),
-                                        child: Column(
-                                          children: [
-                                            Text(DateFormat.jm()
-                                                .format(_data
-                                                    .weather
-                                                    .hourly[hourlyIndex[index]]
-                                                    .dt)
-                                                .toString()),
-                                            Container(
-                                              height: 50,
-                                              child: Image.network(
-                                                  'http://openweathermap.org/img/wn/${_data.weather.hourly[hourlyIndex[index]].weather.first.icon}@4x.png',
-                                                  fit: BoxFit.cover),
-                                            ),
-                                            Text(_data
-                                                    .weather
-                                                    .hourly[hourlyIndex[index]]
-                                                    .temp
-                                                    .toInt()
-                                                    .toString() +
-                                                "°")
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                )
+                                HourlyList(
+                                  hourly: _data.weather.hourly,
+                                ),
                               ],
                             ),
                           ),

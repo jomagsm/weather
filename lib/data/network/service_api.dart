@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:weatther2/data/network/cordinates_model.dart';
+import 'package:weatther2/data/network/coordinates_model.dart';
 import 'package:weatther2/data/network/weather_model.dart';
 import 'dio_settings.dart';
 
