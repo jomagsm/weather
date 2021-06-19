@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weatther2/theme/text_theme.dart';
 
 class HourlyList extends StatelessWidget {
   final List hourly;
@@ -19,16 +20,22 @@ class HourlyList extends StatelessWidget {
             margin: EdgeInsets.only(left: 20),
             child: Column(
               children: [
-                Text(DateFormat.jm()
-                    .format(hourly[hourlyIndex[index]].dt)
-                    .toString()),
+                Text(
+                  DateFormat.jm()
+                      .format(hourly[hourlyIndex[index]].dt)
+                      .toString(),
+                  style: TextThemes.hourlyList,
+                ),
                 Container(
                   height: 50,
                   child: Image.network(
                       'http://openweathermap.org/img/wn/${hourly[hourlyIndex[index]].weather.first.icon}@4x.png',
                       fit: BoxFit.cover),
                 ),
-                Text(hourly[hourlyIndex[index]].temp.toInt().toString() + "°")
+                Text(
+                  hourly[hourlyIndex[index]].temp.toInt().toString() + "°",
+                  style: TextThemes.hourlyList,
+                )
               ],
             ),
           );

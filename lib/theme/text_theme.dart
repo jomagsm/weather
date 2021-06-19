@@ -15,6 +15,11 @@ var shadow = [
 ];
 
 class TextThemes {
+  static var hourlyList = TextStyle(
+    fontWeight: FontWeight.normal,
+    color: ColorPalette.white,
+    shadows: shadow,
+  );
   static var h4 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.normal,
