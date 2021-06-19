@@ -9,13 +9,14 @@ import 'package:weatther2/theme/text_theme.dart';
 import 'widgets/hourly_list.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key key}) : super(key: key);
+  final String city;
+  HomePage({Key key, @required this.city}) : super(key: key);
   final List hourlyIndex = [3, 6, 9, 12];
   final bloc = WeatherBloc(WeatherRepository());
   final dynamic currentDate = DateFormat.yMMMMEEEEd().format(DateTime.now());
   final dynamic currentWeekday = DateFormat.EEEE().format(DateTime.now());
   final dynamic currentTime = DateFormat.jm().format(DateTime.now());
-  final String city = "Бишкек";
+  // final String city = "Бишкек";
 
   @override
   Widget build(BuildContext context) {
