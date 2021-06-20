@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatther2/screens/weather_screen/screen.dart';
+import 'package:weatther2/theme/color_theme.dart';
 
 import 'bloc/selected_city_bloc.dart';
 import 'widgets/utils.dart';
@@ -12,7 +13,9 @@ class SelectedPage extends StatelessWidget {
     return BlocProvider<SelectedCityBloc>(
         create: (context) => SelectedCityBloc(),
         child: Scaffold(
+            backgroundColor: ColorPalette.blue,
             appBar: AppBar(
+              // backgroundColor: ColorPalette.blue,
               centerTitle: true,
               title: Text('Weather'),
             ),
@@ -20,8 +23,8 @@ class SelectedPage extends StatelessWidget {
               listener: (context, state) {},
               builder: (context, state) {
                 return state.maybeMap(
-                    error: (_) => Center(
-                          child: Text('Error'),
+                    error: (message) => Center(
+                          child: Text(message.toString()),
                         ),
                     orElse: () => Center(child: CircularProgressIndicator()),
                     loading: (_) => Center(child: CircularProgressIndicator()),
@@ -46,7 +49,7 @@ class SelectedPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                    data: (_data) => HomePage(city: _data.city.name));
+                    data: (_data) => HomePage(city: _data.city));
               },
             )));
   }

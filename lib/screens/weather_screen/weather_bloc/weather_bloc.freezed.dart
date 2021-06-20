@@ -536,8 +536,10 @@ class _$WeatherEventTearOff {
   const _$WeatherEventTearOff();
 
 // ignore: unused_element
-  _InitialWeatherEvent initial() {
-    return const _InitialWeatherEvent();
+  _InitialWeatherEvent initial({@required Coordinates city}) {
+    return _InitialWeatherEvent(
+      city: city,
+    );
   }
 }
 
@@ -547,13 +549,15 @@ const $WeatherEvent = _$WeatherEventTearOff();
 
 /// @nodoc
 mixin _$WeatherEvent {
+  Coordinates get city;
+
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(Coordinates city),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(Coordinates city),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -565,6 +569,9 @@ mixin _$WeatherEvent {
     TResult initial(_InitialWeatherEvent value),
     @required TResult orElse(),
   });
+
+  @JsonKey(ignore: true)
+  $WeatherEventCopyWith<WeatherEvent> get copyWith;
 }
 
 /// @nodoc
@@ -572,6 +579,7 @@ abstract class $WeatherEventCopyWith<$Res> {
   factory $WeatherEventCopyWith(
           WeatherEvent value, $Res Function(WeatherEvent) then) =
       _$WeatherEventCopyWithImpl<$Res>;
+  $Res call({Coordinates city});
 }
 
 /// @nodoc
@@ -581,13 +589,25 @@ class _$WeatherEventCopyWithImpl<$Res> implements $WeatherEventCopyWith<$Res> {
   final WeatherEvent _value;
   // ignore: unused_field
   final $Res Function(WeatherEvent) _then;
+
+  @override
+  $Res call({
+    Object city = freezed,
+  }) {
+    return _then(_value.copyWith(
+      city: city == freezed ? _value.city : city as Coordinates,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$InitialWeatherEventCopyWith<$Res> {
+abstract class _$InitialWeatherEventCopyWith<$Res>
+    implements $WeatherEventCopyWith<$Res> {
   factory _$InitialWeatherEventCopyWith(_InitialWeatherEvent value,
           $Res Function(_InitialWeatherEvent) then) =
       __$InitialWeatherEventCopyWithImpl<$Res>;
+  @override
+  $Res call({Coordinates city});
 }
 
 /// @nodoc
@@ -600,43 +620,65 @@ class __$InitialWeatherEventCopyWithImpl<$Res>
 
   @override
   _InitialWeatherEvent get _value => super._value as _InitialWeatherEvent;
+
+  @override
+  $Res call({
+    Object city = freezed,
+  }) {
+    return _then(_InitialWeatherEvent(
+      city: city == freezed ? _value.city : city as Coordinates,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_InitialWeatherEvent implements _InitialWeatherEvent {
-  const _$_InitialWeatherEvent();
+  const _$_InitialWeatherEvent({@required this.city}) : assert(city != null);
+
+  @override
+  final Coordinates city;
 
   @override
   String toString() {
-    return 'WeatherEvent.initial()';
+    return 'WeatherEvent.initial(city: $city)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _InitialWeatherEvent);
+    return identical(this, other) ||
+        (other is _InitialWeatherEvent &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(city);
+
+  @JsonKey(ignore: true)
+  @override
+  _$InitialWeatherEventCopyWith<_InitialWeatherEvent> get copyWith =>
+      __$InitialWeatherEventCopyWithImpl<_InitialWeatherEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(Coordinates city),
   }) {
     assert(initial != null);
-    return initial();
+    return initial(city);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(Coordinates city),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
-      return initial();
+      return initial(city);
     }
     return orElse();
   }
@@ -665,5 +707,12 @@ class _$_InitialWeatherEvent implements _InitialWeatherEvent {
 }
 
 abstract class _InitialWeatherEvent implements WeatherEvent {
-  const factory _InitialWeatherEvent() = _$_InitialWeatherEvent;
+  const factory _InitialWeatherEvent({@required Coordinates city}) =
+      _$_InitialWeatherEvent;
+
+  @override
+  Coordinates get city;
+  @override
+  @JsonKey(ignore: true)
+  _$InitialWeatherEventCopyWith<_InitialWeatherEvent> get copyWith;
 }

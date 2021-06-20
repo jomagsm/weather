@@ -31,6 +31,7 @@ class SelectedCityBloc extends Bloc<SelectedCityEvent, SelectedCityState> {
       city = await repository.getCoordinates(event.city);
       yield SelectedCityState.data(city: city);
     } catch (e) {
+      print(e);
       yield SelectedCityState.error(message: e.toString());
     }
   }

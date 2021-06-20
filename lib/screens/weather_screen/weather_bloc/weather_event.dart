@@ -2,5 +2,6 @@ part of 'weather_bloc.dart';
 
 @freezed
 abstract class WeatherEvent with _$WeatherEvent {
-  const factory WeatherEvent.initial() = _InitialWeatherEvent;
+  const factory WeatherEvent.initial({@required Coordinates city}) =
+      _InitialWeatherEvent;
 }

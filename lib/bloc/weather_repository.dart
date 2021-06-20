@@ -7,5 +7,6 @@ class WeatherRepository {
   Future<Coordinates> getCoordinates(String city) =>
       _weatherProvider.getCoordinates(city);
 
-  Future<Weather> getWeather() => _weatherProvider.getWeather();
+  Future<Weather> getWeather(Coordinates city) =>
+      _weatherProvider.getWeather(city);
 }

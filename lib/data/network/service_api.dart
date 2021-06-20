@@ -15,12 +15,12 @@ class ServiceApi {
     _dioSettings = DioSettings();
     _dio = _dioSettings.dio;
   }
-  Future<Weather> getWeather() async {
+  Future<Weather> getWeather(Coordinates city) async {
     try {
       final response = await _dio.get("/data/2.5/onecall?", queryParameters: {
         "appid": DioSettings.appid,
-        "lat": DioSettings.lat,
-        "lon": DioSettings.lon,
+        "lat": city.lat,
+        "lon": city.lon,
         "exclude": DioSettings.daily,
         "units": DioSettings.units,
       });
@@ -31,7 +31,7 @@ class ServiceApi {
     }
   }
 
-  Future<Coordinates> getCoordinates(city) async {
+  Future<Coordinates> getCoordinates(String city) async {
     try {
       final response = await _dio.get("/geo/1.0/direct?", queryParameters: {
         "q": city,
@@ -39,14 +39,12 @@ class ServiceApi {
       });
       try {
         Coordinates coordinate = Coordinates.fromJson(response.data[0]);
-        DioSettings.lat = coordinate.lat;
-        DioSettings.lon = coordinate.lon;
         return coordinate;
       } catch (e) {
         print(e);
       }
     } catch (e) {
-      // print(e);
+      print(e);
       // print(e.error);
       // print(e);
       // DioError();
