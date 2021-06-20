@@ -19,7 +19,6 @@ class SelectedCityBloc extends Bloc<SelectedCityEvent, SelectedCityState> {
     SelectedCityEvent event,
   ) async* {
     yield* event.map(
-      // initial: _mapInitialSelectedCityEvent,
       selectedView: _mapSelectedViewSelectedCityEvent,
     );
   }
