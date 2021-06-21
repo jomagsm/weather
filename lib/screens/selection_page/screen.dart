@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weatther2/screens/selection_page/widgets/content.dart';
+import 'package:weatther2/screens/selection_page/widgets/error_screen.dart';
+import 'package:weatther2/screens/selection_page/widgets/weather_screen.dart';
 import 'bloc/selected_city_bloc.dart';
-import 'widgets/hourly_list.dart';
+import 'widgets/circular_progress.dart';
+import 'widgets/selected_city_screen.dart';
 import 'widgets/utils.dart';
 
 class SelectedPage extends StatelessWidget {
@@ -15,100 +17,41 @@ class SelectedPage extends StatelessWidget {
           listener: (context, state) {},
           builder: (context, state) {
             return state.maybeMap(
-              error: (message) => Scaffold(
-                appBar: AppBar(
-                  leading: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
-                    ),
-                    onPressed: () {
-                      context.read<SelectedCityBloc>()
-                        ..add(SelectedCityEvent.initail());
-                    },
-                  ),
-                ),
-                body: Center(
-                  child: Text(message.toString()),
-                ),
-              ),
-              orElse: () => Scaffold(
-                  appBar: AppBar(
-                    leading: IconButton(
-                      icon: Icon(
-                        Icons.arrow_back,
-                      ),
+                error: (message) => ErrorScaffold(
+                      message: message,
                       onPressed: () {
-                        context.read<SelectedCityBloc>()
-                          ..add(SelectedCityEvent.initail());
+                        {
+                          context.read<SelectedCityBloc>()
+                            ..add(SelectedCityEvent.initail());
+                        }
                       },
                     ),
-                  ),
-                  body: Center(child: CircularProgressIndicator())),
-              loading: (_) =>
-                  Scaffold(body: Center(child: CircularProgressIndicator())),
-              initial: (_) => Scaffold(
-                appBar: AppBar(
-                  backgroundColor: Colors.transparent,
-                  title: Text('Weather'),
-                  centerTitle: true,
-                ),
-                body: SafeArea(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Enter city',
-                          border: OutlineInputBorder(),
-                        ),
-                        maxLength: 100,
-                        textCapitalization: TextCapitalization.words,
-                        onSubmitted: (value) {
-                          String city = convertToTitleCase(value);
+                orElse: () => CircularProgress(
+                      onPressed: () {
+                        {
                           context.read<SelectedCityBloc>()
-                            ..add(SelectedCityEvent.selectedView(city: city));
-                        },
-                      ),
+                            ..add(SelectedCityEvent.initail());
+                        }
+                      },
                     ),
-                  ),
-                ),
-              ),
-              data: (_data) => Scaffold(
-                appBar: AppBar(
-                  centerTitle: true,
-                  leading: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
+                loading: (_) =>
+                    Scaffold(body: Center(child: CircularProgressIndicator())),
+                initial: (_) => SelectedCityScreen(
+                      onSubmitted: (value) {
+                        String city = convertToTitleCase(value);
+                        context.read<SelectedCityBloc>()
+                          ..add(SelectedCityEvent.selectedView(city: city));
+                      },
                     ),
-                    onPressed: () {
-                      context.read<SelectedCityBloc>()
-                        ..add(SelectedCityEvent.initail());
-                    },
-                  ),
-                  title: Text(_data.city.name),
-                  backgroundColor: Colors.transparent,
-                ),
-                backgroundColor:
-                    getBackground(_data.weather.hourly[0].weather[0].id),
-                body: SingleChildScrollView(
-                  child: SafeArea(
-                    child: Center(
-                      child: Column(
-                        children: [
-                          Content(
-                            weather: _data.weather,
-                            city: _data.city,
-                          ),
-                          HourlyList(
-                            hourly: _data.weather.hourly,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            );
+                data: (_data) => WeatherScreen(
+                      data: _data,
+                      onPressed: () {
+                        {
+                          context.read<SelectedCityBloc>()
+                            ..add(SelectedCityEvent.initail());
+                        }
+                      },
+                    ));
           },
         ));
   }
