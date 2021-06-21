@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatther2/bloc/weather_repository.dart';
 import 'package:weatther2/data/network/coordinates_model.dart';
 import 'package:weatther2/screens/weather_screen/weather_bloc/weather_bloc.dart';
+import 'package:weatther2/screens/weather_screen/widgets/utils.dart';
 
 import 'widgets/content.dart';
 import 'widgets/hourly_list.dart';
@@ -22,19 +23,23 @@ class HomePage extends StatelessWidget {
           builder: (context, state) {
             return state.maybeMap(
               orElse: () => Center(child: CircularProgressIndicator()),
-              data: (_data) => SingleChildScrollView(
-                child: SafeArea(
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Content(
-                          weather: _data.weather,
-                          city: city,
-                        ),
-                        HourlyList(
-                          hourly: _data.weather.hourly,
-                        ),
-                      ],
+              data: (_data) => Scaffold(
+                backgroundColor:
+                    getBackground(_data.weather.hourly[0].weather[0].id),
+                body: SingleChildScrollView(
+                  child: SafeArea(
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Content(
+                            weather: _data.weather,
+                            city: city,
+                          ),
+                          HourlyList(
+                            hourly: _data.weather.hourly,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
