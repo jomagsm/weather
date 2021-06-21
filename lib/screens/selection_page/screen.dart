@@ -15,11 +15,37 @@ class SelectedPage extends StatelessWidget {
           listener: (context, state) {},
           builder: (context, state) {
             return state.maybeMap(
-              error: (message) => Center(
-                child: Text(message.toString()),
+              error: (message) => Scaffold(
+                appBar: AppBar(
+                  leading: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                    ),
+                    onPressed: () {
+                      context.read<SelectedCityBloc>()
+                        ..add(SelectedCityEvent.initail());
+                    },
+                  ),
+                ),
+                body: Center(
+                  child: Text(message.toString()),
+                ),
               ),
-              orElse: () => Center(child: CircularProgressIndicator()),
-              loading: (_) => Center(child: CircularProgressIndicator()),
+              orElse: () => Scaffold(
+                  appBar: AppBar(
+                    leading: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                      ),
+                      onPressed: () {
+                        context.read<SelectedCityBloc>()
+                          ..add(SelectedCityEvent.initail());
+                      },
+                    ),
+                  ),
+                  body: Center(child: CircularProgressIndicator())),
+              loading: (_) =>
+                  Scaffold(body: Center(child: CircularProgressIndicator())),
               initial: (_) => Scaffold(
                 appBar: AppBar(
                   backgroundColor: Colors.transparent,
