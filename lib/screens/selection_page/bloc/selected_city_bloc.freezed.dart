@@ -19,6 +19,11 @@ class _$SelectedCityEventTearOff {
       city: city,
     );
   }
+
+// ignore: unused_element
+  _InitialSelectedCityEvent initail() {
+    return const _InitialSelectedCityEvent();
+  }
 }
 
 /// @nodoc
@@ -27,29 +32,28 @@ const $SelectedCityEvent = _$SelectedCityEventTearOff();
 
 /// @nodoc
 mixin _$SelectedCityEvent {
-  String get city;
-
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult selectedView(String city),
+    @required TResult initail(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult selectedView(String city),
+    TResult initail(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult selectedView(_SelectedViewSelectedCityEvent value),
+    @required TResult initail(_InitialSelectedCityEvent value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult selectedView(_SelectedViewSelectedCityEvent value),
+    TResult initail(_InitialSelectedCityEvent value),
     @required TResult orElse(),
   });
-
-  @JsonKey(ignore: true)
-  $SelectedCityEventCopyWith<SelectedCityEvent> get copyWith;
 }
 
 /// @nodoc
@@ -57,7 +61,6 @@ abstract class $SelectedCityEventCopyWith<$Res> {
   factory $SelectedCityEventCopyWith(
           SelectedCityEvent value, $Res Function(SelectedCityEvent) then) =
       _$SelectedCityEventCopyWithImpl<$Res>;
-  $Res call({String city});
 }
 
 /// @nodoc
@@ -68,25 +71,14 @@ class _$SelectedCityEventCopyWithImpl<$Res>
   final SelectedCityEvent _value;
   // ignore: unused_field
   final $Res Function(SelectedCityEvent) _then;
-
-  @override
-  $Res call({
-    Object city = freezed,
-  }) {
-    return _then(_value.copyWith(
-      city: city == freezed ? _value.city : city as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$SelectedViewSelectedCityEventCopyWith<$Res>
-    implements $SelectedCityEventCopyWith<$Res> {
+abstract class _$SelectedViewSelectedCityEventCopyWith<$Res> {
   factory _$SelectedViewSelectedCityEventCopyWith(
           _SelectedViewSelectedCityEvent value,
           $Res Function(_SelectedViewSelectedCityEvent) then) =
       __$SelectedViewSelectedCityEventCopyWithImpl<$Res>;
-  @override
   $Res call({String city});
 }
 
@@ -149,8 +141,10 @@ class _$_SelectedViewSelectedCityEvent
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult selectedView(String city),
+    @required TResult initail(),
   }) {
     assert(selectedView != null);
+    assert(initail != null);
     return selectedView(city);
   }
 
@@ -158,6 +152,7 @@ class _$_SelectedViewSelectedCityEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult selectedView(String city),
+    TResult initail(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -171,8 +166,10 @@ class _$_SelectedViewSelectedCityEvent
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult selectedView(_SelectedViewSelectedCityEvent value),
+    @required TResult initail(_InitialSelectedCityEvent value),
   }) {
     assert(selectedView != null);
+    assert(initail != null);
     return selectedView(this);
   }
 
@@ -180,6 +177,7 @@ class _$_SelectedViewSelectedCityEvent
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult selectedView(_SelectedViewSelectedCityEvent value),
+    TResult initail(_InitialSelectedCityEvent value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -194,12 +192,102 @@ abstract class _SelectedViewSelectedCityEvent implements SelectedCityEvent {
   const factory _SelectedViewSelectedCityEvent({@required String city}) =
       _$_SelectedViewSelectedCityEvent;
 
-  @override
   String get city;
-  @override
   @JsonKey(ignore: true)
   _$SelectedViewSelectedCityEventCopyWith<_SelectedViewSelectedCityEvent>
       get copyWith;
+}
+
+/// @nodoc
+abstract class _$InitialSelectedCityEventCopyWith<$Res> {
+  factory _$InitialSelectedCityEventCopyWith(_InitialSelectedCityEvent value,
+          $Res Function(_InitialSelectedCityEvent) then) =
+      __$InitialSelectedCityEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$InitialSelectedCityEventCopyWithImpl<$Res>
+    extends _$SelectedCityEventCopyWithImpl<$Res>
+    implements _$InitialSelectedCityEventCopyWith<$Res> {
+  __$InitialSelectedCityEventCopyWithImpl(_InitialSelectedCityEvent _value,
+      $Res Function(_InitialSelectedCityEvent) _then)
+      : super(_value, (v) => _then(v as _InitialSelectedCityEvent));
+
+  @override
+  _InitialSelectedCityEvent get _value =>
+      super._value as _InitialSelectedCityEvent;
+}
+
+/// @nodoc
+class _$_InitialSelectedCityEvent implements _InitialSelectedCityEvent {
+  const _$_InitialSelectedCityEvent();
+
+  @override
+  String toString() {
+    return 'SelectedCityEvent.initail()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _InitialSelectedCityEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult selectedView(String city),
+    @required TResult initail(),
+  }) {
+    assert(selectedView != null);
+    assert(initail != null);
+    return initail();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult selectedView(String city),
+    TResult initail(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (initail != null) {
+      return initail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult selectedView(_SelectedViewSelectedCityEvent value),
+    @required TResult initail(_InitialSelectedCityEvent value),
+  }) {
+    assert(selectedView != null);
+    assert(initail != null);
+    return initail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult selectedView(_SelectedViewSelectedCityEvent value),
+    TResult initail(_InitialSelectedCityEvent value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (initail != null) {
+      return initail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitialSelectedCityEvent implements SelectedCityEvent {
+  const factory _InitialSelectedCityEvent() = _$_InitialSelectedCityEvent;
 }
 
 /// @nodoc
@@ -207,8 +295,9 @@ class _$SelectedCityStateTearOff {
   const _$SelectedCityStateTearOff();
 
 // ignore: unused_element
-  _DataSelectedCityState data({@required Coordinates city}) {
+  _DataSelectedCityState data({@required Weather weather, Coordinates city}) {
     return _DataSelectedCityState(
+      weather: weather,
       city: city,
     );
   }
@@ -239,14 +328,14 @@ const $SelectedCityState = _$SelectedCityStateTearOff();
 mixin _$SelectedCityState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(Coordinates city),
+    @required TResult data(Weather weather, Coordinates city),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(Coordinates city),
+    TResult data(Weather weather, Coordinates city),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
@@ -291,7 +380,7 @@ abstract class _$DataSelectedCityStateCopyWith<$Res> {
   factory _$DataSelectedCityStateCopyWith(_DataSelectedCityState value,
           $Res Function(_DataSelectedCityState) then) =
       __$DataSelectedCityStateCopyWithImpl<$Res>;
-  $Res call({Coordinates city});
+  $Res call({Weather weather, Coordinates city});
 }
 
 /// @nodoc
@@ -307,9 +396,11 @@ class __$DataSelectedCityStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object weather = freezed,
     Object city = freezed,
   }) {
     return _then(_DataSelectedCityState(
+      weather: weather == freezed ? _value.weather : weather as Weather,
       city: city == freezed ? _value.city : city as Coordinates,
     ));
   }
@@ -317,27 +408,35 @@ class __$DataSelectedCityStateCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_DataSelectedCityState implements _DataSelectedCityState {
-  const _$_DataSelectedCityState({@required this.city}) : assert(city != null);
+  const _$_DataSelectedCityState({@required this.weather, this.city})
+      : assert(weather != null);
 
+  @override
+  final Weather weather;
   @override
   final Coordinates city;
 
   @override
   String toString() {
-    return 'SelectedCityState.data(city: $city)';
+    return 'SelectedCityState.data(weather: $weather, city: $city)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _DataSelectedCityState &&
+            (identical(other.weather, weather) ||
+                const DeepCollectionEquality()
+                    .equals(other.weather, weather)) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(city);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(weather) ^
+      const DeepCollectionEquality().hash(city);
 
   @JsonKey(ignore: true)
   @override
@@ -348,7 +447,7 @@ class _$_DataSelectedCityState implements _DataSelectedCityState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(Coordinates city),
+    @required TResult data(Weather weather, Coordinates city),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
@@ -357,13 +456,13 @@ class _$_DataSelectedCityState implements _DataSelectedCityState {
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
-    return data(city);
+    return data(weather, city);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(Coordinates city),
+    TResult data(Weather weather, Coordinates city),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
@@ -371,7 +470,7 @@ class _$_DataSelectedCityState implements _DataSelectedCityState {
   }) {
     assert(orElse != null);
     if (data != null) {
-      return data(city);
+      return data(weather, city);
     }
     return orElse();
   }
@@ -409,9 +508,10 @@ class _$_DataSelectedCityState implements _DataSelectedCityState {
 }
 
 abstract class _DataSelectedCityState implements SelectedCityState {
-  const factory _DataSelectedCityState({@required Coordinates city}) =
-      _$_DataSelectedCityState;
+  const factory _DataSelectedCityState(
+      {@required Weather weather, Coordinates city}) = _$_DataSelectedCityState;
 
+  Weather get weather;
   Coordinates get city;
   @JsonKey(ignore: true)
   _$DataSelectedCityStateCopyWith<_DataSelectedCityState> get copyWith;
@@ -457,7 +557,7 @@ class _$_InitialSelectedCityState implements _InitialSelectedCityState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(Coordinates city),
+    @required TResult data(Weather weather, Coordinates city),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
@@ -472,7 +572,7 @@ class _$_InitialSelectedCityState implements _InitialSelectedCityState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(Coordinates city),
+    TResult data(Weather weather, Coordinates city),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
@@ -561,7 +661,7 @@ class _$_LoadingSelectedCityState implements _LoadingSelectedCityState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(Coordinates city),
+    @required TResult data(Weather weather, Coordinates city),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
@@ -576,7 +676,7 @@ class _$_LoadingSelectedCityState implements _LoadingSelectedCityState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(Coordinates city),
+    TResult data(Weather weather, Coordinates city),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
@@ -688,7 +788,7 @@ class _$_ErrorSelectedCityState implements _ErrorSelectedCityState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(Coordinates city),
+    @required TResult data(Weather weather, Coordinates city),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
@@ -703,7 +803,7 @@ class _$_ErrorSelectedCityState implements _ErrorSelectedCityState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(Coordinates city),
+    TResult data(Weather weather, Coordinates city),
     TResult initial(),
     TResult loading(),
     TResult error(String message),

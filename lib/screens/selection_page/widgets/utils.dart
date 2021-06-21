@@ -1,3 +1,5 @@
+import 'package:weatther2/theme/color_theme.dart';
+
 String convertToTitleCase(String text) {
   if (text == null) {
     return null;
@@ -28,5 +30,15 @@ String convertToTitleCase(String text) {
 extension CapitalizedStringExtension on String {
   String toTitleCase() {
     return convertToTitleCase(this);
+  }
+}
+
+getBackground(weatherID) {
+  if (weatherID >= 200 && weatherID <= 781) {
+    return ColorPalette.stormBackground;
+  } else if (weatherID == 800) {
+    return ColorPalette.sunyBackground;
+  } else {
+    return ColorPalette.blue;
   }
 }
