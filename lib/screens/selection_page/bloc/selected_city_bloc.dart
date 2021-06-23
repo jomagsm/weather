@@ -39,8 +39,8 @@ class SelectedCityBloc extends Bloc<SelectedCityEvent, SelectedCityState> {
       Weather weather = await repository.getWeather(city);
       yield SelectedCityState.data(weather: weather, city: city);
     } catch (e) {
-      print(e);
-      yield SelectedCityState.error(message: e.toString());
+      // print(e);
+      yield SelectedCityState.error(message: e);
     }
   }
 }

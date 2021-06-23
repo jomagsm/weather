@@ -14,11 +14,18 @@ class SelectedPage extends StatelessWidget {
     return BlocProvider<SelectedCityBloc>(
         create: (context) => SelectedCityBloc(),
         child: BlocConsumer<SelectedCityBloc, SelectedCityState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            state.maybeWhen(
+                error: (error) => {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(error.toString())))
+                    },
+                orElse: () {});
+          },
           builder: (context, state) {
             return state.maybeMap(
-                error: (message) => ErrorScaffold(
-                      message: message,
+                error: (_error) => ErrorScaffold(
+                      error: _error,
                       onPressed: () {
                         {
                           context.read<SelectedCityBloc>()

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weatther2/screens/selection_page/bloc/selected_city_bloc.dart';
 
 class CircularProgress extends StatelessWidget {
   final Function onPressed;

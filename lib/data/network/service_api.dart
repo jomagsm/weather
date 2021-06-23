@@ -41,10 +41,15 @@ class ServiceApi {
         Coordinates coordinate = Coordinates.fromJson(response.data[0]);
         return coordinate;
       } catch (e) {
+        print("0" * 50);
         print(e);
+        // print(e.error);
+        throw (e);
       }
     } catch (e) {
       print(e);
+      throw e.error;
+      // print(e);
       // print(e.error);
       // print(e);
       // DioError();

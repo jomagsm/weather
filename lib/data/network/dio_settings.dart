@@ -25,8 +25,18 @@ class DioSettings {
             request: response.request,
           ),
         );
+      } else if (response.statusCode == 200 && response.data.isEmpty) {
+        throw DioError(
+          error: "Город введен не правильно",
+          response: Response(
+            statusCode: 400,
+            request: response.request,
+          ),
+        );
       }
     }, onError: (DioError error) async {
+      print("=" * 10 + "=" * 10);
+      print(error);
       if (error.type == DioErrorType.CONNECT_TIMEOUT) {
         throw DioError(
           error: "Сервер не отвечает попробуйте еще раз",

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ErrorScaffold extends StatelessWidget {
   final Function onPressed;
-  final message;
-  ErrorScaffold({Key key, @required this.onPressed, this.message})
+  final error;
+  ErrorScaffold({Key key, @required this.onPressed, this.error})
       : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class ErrorScaffold extends StatelessWidget {
             onPressed: onPressed),
       ),
       body: Center(
-        child: Text(message.toString()),
+        child: Text(error.message.toString()),
       ),
     );
   }
